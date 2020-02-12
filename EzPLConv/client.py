@@ -20,7 +20,7 @@ def getTracks(playlistID,file):
         tracks = sp.next(tracks)
         showTracks(tracks, file)
 
-# Returns a list of songs to be downnloaded
+# Returns a list of tuples of songs to be downloaded separated by artist + song name
 def buildQueue(file):
     queue = []
     for song in file:
