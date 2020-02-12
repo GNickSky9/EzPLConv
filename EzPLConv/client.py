@@ -29,7 +29,7 @@ def buildQueue(file):
     return queue
 
 # Heuristic to determine which video is most fitting when searching on youtube
-def bestVideoHeuristic()
+def bestVideoHeuristic():
     return
 
 # Get the urls of the best videos corresponding to songs desired
@@ -49,7 +49,7 @@ def main():
     output = open("tracks.txt", "w")
     getTracks(playlistID,output)
     output.close()
-    
+
     songs = open("tracks.txt")
     queue = buildQueue(songs)
     songs.close()
