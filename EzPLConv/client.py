@@ -3,10 +3,12 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import sys
 
 # Shows the artist and song name of each track
-def showTracks(playlist,file):
+def showTracks(playlist,file,sp):
     for item in playlist['items']:
         track = item['track']
-        file.write(track['artists'][0]['name'] + ' - ' + track['name'] + '\n')
+        file.write(track['artists'][0]['name'] + ' - ' + track['name'] + ' : ' \
+        + str(track['duration_ms']) + '\n')
+
 
 # Gets tracks from a playlist and stores it
 def getTracks(playlistID,file):
@@ -15,10 +17,10 @@ def getTracks(playlistID,file):
 
     playlist = sp.playlist(playlistID, fields="tracks,next")
     tracks = playlist['tracks']
-    showTracks(tracks, file)
+    showTracks(tracks, file, sp)
     while tracks['next']:
         tracks = sp.next(tracks)
-        showTracks(tracks, file)
+        showTracks(tracks, file, sp)
 
 # Returns a list of tuples of songs to be downloaded separated by artist + song name
 def buildQueue(file):
@@ -55,6 +57,8 @@ def main():
     songs.close()
 
     queueSize = len(queue)
+
+
 
 
 
