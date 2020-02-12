@@ -3,10 +3,10 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import sys
 
 def showTracks(playlist,file):
-    for i, item in enumerate(playlist['items']):
+    for item in playlist['items']:
         track = item['track']
-        file.write("%s %s" % (track['artists'][0]['name'] + ' -', track['name']) + '\n')
-
+        file.write(track['artists'][0]['name'] + ' - ' + track['name'] + '\n')
+        
 def getTracks(playlistID,file):
     clientCredentialsManager = SpotifyClientCredentials()
     sp = spotipy.Spotify(client_credentials_manager=clientCredentialsManager)
