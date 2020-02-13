@@ -6,8 +6,8 @@ import sys
 def showTracks(playlist,file):
     for item in playlist['items']:
         track = item['track']
-        file.write(track['artists'][0]['name'] + ' - ' + track['name'] + ' : ' \
-        + str(track['duration_ms']) + '\n')
+        file.write(track['artists'][0]['name'] + ' - ' + track['name'] + ' - ' \
+        + str(track['duration_ms']) + "\n")
 
 
 # Gets tracks from a playlist and stores it
@@ -31,13 +31,18 @@ def buildQueue(file):
     return queue
 
 # Heuristic to determine which video is most fitting when searching on youtube
-def bestVideoHeuristic():
+def bestVideoHeuristic(song,videoInfo):
+    artist = song[0]
+    songName = song[1]
+    duration = song[2]
+    #print(artist + " " + songName + " " + duration)
     return
 
 # Get the urls of the best videos corresponding to songs desired
 def getUrls(queue):
     urls = []
-
+    for song in queue:
+        bestVideoHeuristic(song,None)
     return urls
 
 def main():
@@ -56,9 +61,7 @@ def main():
     queue = buildQueue(songs)
     songs.close()
 
-    queueSize = len(queue)
-
-
+    getUrls(queue)
 
 
 
