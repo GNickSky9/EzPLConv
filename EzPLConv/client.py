@@ -42,7 +42,7 @@ def bestVideoHeuristic(song,videoUrls,videoDurations,videoTitles=None):
     artist = song[0]
     songName = song[1]
     duration = song[2]
-    keyWords = ['acoustic','Acoustic','live','Live','remix','Remix']
+    #keyWords = ['acoustic','Acoustic','live','Live','remix','Remix'] # UNUSED YET
     newDurations = []
     result = None
 
