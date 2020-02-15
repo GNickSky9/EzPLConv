@@ -118,10 +118,13 @@ def getUrls(queue):
                 durations.append(duration)
 
             goodUrls.append(bestVideoHeuristic(song,vidUrls,durations))
-            output = open('urls.txt','w')
-            for url in goodUrls:
-                output.write(url+'\n')
 
+        output = open('urls.txt','w')
+        for url in goodUrls:
+            output.write(url+'\n')
+
+        output.close()
+        
     except HttpError as err:
         print("A rate limit error or connection error %d occured\n" \
             % (err.resp.status))
